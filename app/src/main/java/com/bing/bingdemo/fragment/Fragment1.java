@@ -2,8 +2,10 @@ package com.bing.bingdemo.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +52,7 @@ public class Fragment1 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("wubingzhao", "onCreate Fragment1: ");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -59,6 +62,43 @@ public class Fragment1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.i("wubingzhao", "onCreateView Fragment1: ");
         return inflater.inflate(R.layout.fragment_1, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i("wubingzhao", "onActivityCreated Fragment1: ");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i("wubingzhao", "onStart Fragment1: ");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("wubingzhao", "onResume Fragment1: ");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("wubingzhao", "onDestroy Fragment1: ");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i("wubingzhao", "onDestroyView Fragment1: ");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i("wubingzhao", "onStop Fragment1: ");
     }
 }
