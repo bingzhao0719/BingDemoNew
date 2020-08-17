@@ -1,7 +1,13 @@
 package com.bing.bingdemo.sqlite;
 
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,8 +16,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bing.bingdemo.MainActivity;
 import com.bing.bingdemo.R;
+
+import java.util.List;
+import java.util.Stack;
 
 
 public class SqliteActivity extends AppCompatActivity {
@@ -20,6 +28,14 @@ public class SqliteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sqlite);
+        IntentFilter intentFilter = new IntentFilter("haha");
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.i("wubingzhao", "onReceive SqliteActivity intent: "+intent +" thread:"+Thread.currentThread());
+                abortBroadcast();
+            }
+        },intentFilter);
     }
 
     public void onBtnInsert(View view) {
@@ -33,8 +49,12 @@ public class SqliteActivity extends AppCompatActivity {
 //        long id = database.insert("crimes", null, values);
 //        Log.i("wubingzhao", "onBtnInsert id: "+id);
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent("ee");
+        sendBroadcast(intent);
+
+        intent = new Intent("haha");
+//        sendBroadcast(intent);
+        sendOrderedBroadcast(intent,null);
 
     }
 

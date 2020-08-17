@@ -2,11 +2,15 @@ package com.bing.bingdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
-import com.bing.bingdemo.fragment.FragmentTestActivity;
+import com.bing.bingdemo.sqlite.SqliteActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,13 +18,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.tvTextview).setOnClickListener(new View.OnClickListener() {
+        IntentFilter intentFilter = new IntentFilter("haha");
+        intentFilter.setPriority(3);
+        intentFilter.addAction("ee");
+        registerReceiver(new BroadcastReceiver() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FragmentTestActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+            public void onReceive(Context context, Intent intent) {
+                Log.i("wubingzhao", "onReceive MainActivity intent: "+intent +" thread:"+Thread.currentThread());
+                abortBroadcast();
             }
-        });
+        },intentFilter);
+    }
+
+    public void onBtnClicked(View view) {
+//        Intent intent = new Intent("haha");
+//        sendBroadcast(intent);
+//        Intent intent = new Intent("haha");
+//        sendStickyBroadcast(intent);
+        startActivity(new Intent(this, SqliteActivity.class));
+//        finish();
     }
 }
