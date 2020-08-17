@@ -1,6 +1,7 @@
 package com.bing.bingdemo.sqlite;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bing.bingdemo.MainActivity;
 import com.bing.bingdemo.R;
 
 
@@ -21,15 +23,18 @@ public class SqliteActivity extends AppCompatActivity {
     }
 
     public void onBtnInsert(View view) {
-        SqliteBaseHelper helper = new SqliteBaseHelper(this,"test_db",null,1);
-        SQLiteDatabase database = helper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(CrimeDbSchema.CrimeTable.Cols.UUID,"1");
-        values.put(CrimeDbSchema.CrimeTable.Cols.TITLE,"title1");
-        values.put(CrimeDbSchema.CrimeTable.Cols.DATE,"今天");
-        values.put(CrimeDbSchema.CrimeTable.Cols.SOLVED,"solved1");
-        long id = database.insert("crimes", null, values);
-        Log.i("wubingzhao", "onBtnInsert id: "+id);
+//        SqliteBaseHelper helper = new SqliteBaseHelper(this,"test_db",null,1);
+//        SQLiteDatabase database = helper.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(CrimeDbSchema.CrimeTable.Cols.UUID,"1");
+//        values.put(CrimeDbSchema.CrimeTable.Cols.TITLE,"title1");
+//        values.put(CrimeDbSchema.CrimeTable.Cols.DATE,"今天");
+//        values.put(CrimeDbSchema.CrimeTable.Cols.SOLVED,"solved1");
+//        long id = database.insert("crimes", null, values);
+//        Log.i("wubingzhao", "onBtnInsert id: "+id);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
     }
 

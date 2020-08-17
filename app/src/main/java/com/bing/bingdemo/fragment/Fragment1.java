@@ -101,4 +101,9 @@ public class Fragment1 extends Fragment {
         super.onStop();
         Log.i("wubingzhao", "onStop Fragment1: ");
     }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        Log.i("wubingzhao", "isVisibleToUser Fragment1: "+isVisibleToUser);
+    }
 }
