@@ -50,4 +50,32 @@ public final class Book implements Parcelable {
             return new Book[size];
         }
     };
+
+
+    public static void main(String[] args) {
+        int [] nums ={2,7,11,15};
+        int target = 9;
+        search(nums,target);
+    }
+    private static void search(int [] nums,int target){
+        int length = nums.length;
+        int start = 0;
+        int next = 1;
+        for (int i = next; i < length; i++) {
+            if(nums[start] + nums[next] == target){
+                System.out.println(start+","+next);
+            }
+        }
+        while (true){
+            if(nums[start] + nums[next] == target){
+                System.out.println(start+","+next);
+                break;
+            }
+            next++;
+            if(next == length){
+                start++;
+                next = start + 1;
+            }
+        }
+    }
 }

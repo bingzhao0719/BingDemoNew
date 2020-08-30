@@ -25,13 +25,22 @@
         <service
             android:name=".adil.BookService"
             android:enabled="true"
-            android:exported="true"
-            android:process=":bookService" />
+            android:exported="true"></service>
+        <service
+            android:name=".adil.BookService2"
+            android:process=":bookService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <activity android:name=".adil.AidlActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".adil.AidlActivity" />
-        <activity
-            android:name=".fragment.FragmentTestActivity"
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".fragment.FragmentTestActivity"
             android:launchMode="singleTask">
+
         </activity>
         <activity
             android:name=".MainActivity"
