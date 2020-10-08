@@ -15,10 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".cms.CmsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+            <intent-filter >
+                <action android:name="com.bing.test" />
             </intent-filter>
         </activity>
 
@@ -49,6 +47,12 @@
         <activity
             android:name=".sqlite.SqliteActivity"
             android:process=":sqlite" />
+        
+        <receiver android:name=".receiver.StaticReceiver">
+            <intent-filter >
+                <action android:name="com.bing.test" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
