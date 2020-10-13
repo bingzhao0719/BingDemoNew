@@ -1,14 +1,23 @@
 package com.bing.bingdemo.touchevent;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.bing.bingdemo.BaseActivity;
 import com.bing.bingdemo.R;
+import com.bing.bingdemo.adil.AidlActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TouchEventctivity extends AppCompatActivity {
+import static android.view.View.STATUS_BAR_HIDDEN;
+
+public class TouchEventctivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +28,8 @@ public class TouchEventctivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("wubingzhao", "onClick: ");
+                Intent intent = new Intent(TouchEventctivity.this, AidlActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -3,7 +3,23 @@
 1.如何做插件化、组件化
 2.音视频，怎么用原生播放一个视频
 3.动画有哪些，还知道其它什么第三方动画框架
-4.沉浸式效果步骤
+4.状态栏沉浸式效果步骤
+思路：1.设置布局全屏，使得内容可以侵入到状态栏下
+     2.设置状态栏透明，使得状态栏看起来和内容同色
+     3.因为内容会占用状态栏控件，因此文字可能会与状态栏重叠，在根部局设置属性android:fitsSystemWindows="true"，
+     使得根部局设置了一个和状态栏高度一样得paddingTop，这样文字就不会与状态栏重叠了
+适配代码：4.4只需设置FLAG_TRANSLUCENT_STATUS，但状态栏有个渐变效果
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
 5.项目中的核心技术，面试官要根据这个问你
 6.fragment的生命周期，顺序要知道，比如第一个回调和最后一个回调是什么
 7.surfaceView的特点

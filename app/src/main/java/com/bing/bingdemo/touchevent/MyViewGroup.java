@@ -55,7 +55,6 @@ public class MyViewGroup extends FrameLayout {
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d("wubingzhao", "MyViewGroup onInterceptTouchEvent ACTION_UP: ");
-                dispatch = true;
                 break;
             case MotionEvent.ACTION_CANCEL:
                 Log.d("wubingzhao", "MyViewGroup onInterceptTouchEvent ACTION_CANCEL: ");

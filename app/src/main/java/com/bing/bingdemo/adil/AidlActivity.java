@@ -13,6 +13,7 @@ import android.content.ServiceConnection;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -21,8 +22,11 @@ import android.util.ArrayMap;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.bing.bingdemo.BaseActivity;
 import com.bing.bingdemo.MainActivity;
 import com.bing.bingdemo.R;
 
@@ -31,7 +35,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AidlActivity extends AppCompatActivity {
+public class AidlActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
