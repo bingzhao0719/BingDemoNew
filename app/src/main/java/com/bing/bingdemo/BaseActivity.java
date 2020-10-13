@@ -80,7 +80,6 @@ public class BaseActivity extends AppCompatActivity {
 
     /**
      * 设置Android状态栏的字体颜色，状态栏为亮色的时候字体和图标是黑色，状态栏为暗色的时候字体和图标为白色
-     *
      * @param dark 状态栏字体是否为深色
      */
     private void setStatusBarFontIconDark(boolean dark) {
