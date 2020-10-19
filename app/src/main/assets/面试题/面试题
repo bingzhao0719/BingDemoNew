@@ -22,6 +22,9 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
 5.项目中的核心技术，面试官要根据这个问你
 6.fragment的生命周期，顺序要知道，比如第一个回调和最后一个回调是什么
+onAttach->onCreate->onCreateView->onActivityCreate->onStart->onResume
+->onPause->onStop->onDestroyView->onDestroy->onDetach
+
 7.surfaceView的特点
 8.原生与H5怎么交互，原生怎么调H5，H5怎么调原生
 9.svg动画是否了解，原理是什么
