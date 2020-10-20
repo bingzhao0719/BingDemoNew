@@ -10,48 +10,52 @@ import android.view.View;
 import com.bing.bingdemo.R;
 import com.noober.background.BackgroundLibrary;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
 public class FragmentTestActivity extends AppCompatActivity {
+
+    ViewPager2 viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         BackgroundLibrary.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_test);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (fragment1 == null) {
-            fragment1 = new Fragment1();
-            transaction.add(R.id.containerLayout, fragment1);
-        } else {
-            transaction.show(fragment1);
-        }
-        if (fragment2 != null) {
-            transaction.hide(fragment2);
-        }
-        transaction.commit();
+        viewPager = findViewById(R.id.viewPager);
+        final List<Fragment> fragments = new ArrayList<>(2);
+        fragments.add(new Fragment1());
+        fragments.add(new Fragment2());
+        viewPager.setOffscreenPageLimit(1);
+        viewPager.setAdapter(new FragmentStateAdapter(this) {
+            @Override
+            public int getItemCount() {
+                return 2;
+            }
+
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                return fragments.get(position);
+            }
+        });
     }
 
-    Fragment1 fragment1;
-    Fragment2 fragment2;
-
-    Handler handler;
-    MessageQueue messageQueue;
-
     public void onBtnFragment1(View view) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (fragment1 == null) {
-            fragment1 = new Fragment1();
-            transaction.add(R.id.containerLayout, fragment1);
-        } else {
-            transaction.show(fragment1);
-        }
-        if (fragment2 != null) {
-            transaction.hide(fragment2);
-        }
-        transaction.commit();
 
     }
 
@@ -73,17 +77,6 @@ public class FragmentTestActivity extends AppCompatActivity {
     }
 
     public void onBtnFragment2(View view) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (fragment2 == null) {
-            fragment2 = new Fragment2();
-            transaction.add(R.id.containerLayout, fragment2);
-        } else {
-            transaction.show(fragment2);
-        }
-        if (fragment1 != null) {
-            transaction.hide(fragment1);
-        }
-        transaction.commit();
 
     }
 

@@ -95,8 +95,8 @@ public class BookService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i("wubingzhao", "onStartCommand startId: " +startId);
-        return super.onStartCommand(intent, flags, startId);
+        Log.i("wubingzhao", "onStartCommand startId: " +startId+" flags:"+flags);
+        return START_STICKY;
     }
 
     @Override
@@ -107,5 +107,17 @@ public class BookService extends Service {
         book.bookId = 11;
         book.bookName = "蔡智慧书";
         bookList.add(book);
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        Log.i("wubingzhao", "onUnbind: ");
+        return super.onUnbind(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.i("wubingzhao", "onDestroy: ");
+        super.onDestroy();
     }
 }

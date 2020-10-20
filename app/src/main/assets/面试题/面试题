@@ -4,6 +4,7 @@
 2.音视频，怎么用原生播放一个视频
 3.动画有哪些，还知道其它什么第三方动画框架
 4.状态栏沉浸式效果步骤
+文章：https://juejin.im/post/6844903490402123789
 思路：1.设置布局全屏，使得内容可以侵入到状态栏下
      2.设置状态栏透明，使得状态栏看起来和内容同色
      3.因为内容会占用状态栏控件，因此文字可能会与状态栏重叠，在根部局设置属性android:fitsSystemWindows="true"，
@@ -24,12 +25,22 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 6.fragment的生命周期，顺序要知道，比如第一个回调和最后一个回调是什么
 onAttach->onCreate->onCreateView->onActivityCreate->onStart->onResume
 ->onPause->onStop->onDestroyView->onDestroy->onDetach
+返回栈：
 
 7.surfaceView的特点
 8.原生与H5怎么交互，原生怎么调H5，H5怎么调原生
 9.svg动画是否了解，原理是什么
 10.项目用的是什么网络请求框架，说了用okhttp,然后又问没用retrofit吗？估计是想问retrofit，然后继续问有没有看过okhttp源码
-11.service的启动方式区别
+11.service的启动方式区别？onStartCommand返回值的意义？
+  区别：1.启动方式：startService(Intent)：生命周期onCreate->onStartCommand->onDestroy；
+                 bindService(Intent, ServiceConnection, int)：生命周期onCreate->onBind->onUnbind->onDestroy。
+       2.停止方式：stopService(Intent)；unbindService(ServiceConnection)。
+       3.startService：启动者退出了，service还在运行；bindService：启动者退出了，service也会退出。
+       4.startService无法调用服务里的方法而bindService可以。
+       5.多次startService后只需一次stopService就停止；
+         多次bindService不会回调多次onCreate和onBind，会回调ServiceConnection的onServiceConnected，调用多少次
+         bindService就需要多少次unbindService才能停掉service。
+  onStartCommand返回值的意义：1.START_STICKY：
 12.怎么做一个即时通讯项目？我说使用socket保持长连接，又问怎么做socket？？
 
 
