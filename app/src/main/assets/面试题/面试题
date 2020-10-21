@@ -40,7 +40,12 @@ onAttach->onCreate->onCreateView->onActivityCreate->onStart->onResume
        5.多次startService后只需一次stopService就停止；
          多次bindService不会回调多次onCreate和onBind，会回调ServiceConnection的onServiceConnected，调用多少次
          bindService就需要多少次unbindService才能停掉service。
-  onStartCommand返回值的意义：1.START_STICKY：
+  onStartCommand返回值的意义：
+  1.START_STICKY：服务所在进程被杀之后，服务会重新启动，intent为null
+  2.START_NOT_STICKY:服务所在进程被杀之后，服务不会重新启动
+  3.START_REDELIVER_INTENT：服务所在进程被杀之后，服务会重新启动，intent为最后一次的intent
+  4.START_STICKY_COMPATIBILITY：START_STICKY的兼容版本
+  文章：https://cloud.tencent.com/developer/article/1199550
 12.怎么做一个即时通讯项目？我说使用socket保持长连接，又问怎么做socket？？
 
 
