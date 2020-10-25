@@ -14,9 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".touchevent.TouchEventctivity">
+        <activity android:name=".H5.H5Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
         
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".touchevent.TouchEventctivity"></activity>
         <activity android:name=".cms.CmsActivity">
             <intent-filter>
                 <action android:name="com.bing.test" />
@@ -34,16 +39,10 @@
             android:process=":bookService" />
         
         <activity android:name=".adil.AidlActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".fragment.FragmentTestActivity"
-            android:launchMode="singleTask">
-        </activity>
+            android:launchMode="singleTask"></activity>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"

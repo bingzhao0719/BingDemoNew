@@ -29,6 +29,51 @@ onAttach->onCreate->onCreateView->onActivityCreate->onStart->onResume
 
 7.surfaceView的特点
 8.原生与H5怎么交互，原生怎么调H5，H5怎么调原生
+文章：https://www.jianshu.com/p/0b986d6e2e17
+  1、webView如何加载H5页面
+    //加载assets文件夹下的test.html页面
+    mWebView.loadUrl("file:///android_asset/test.html");
+    //加载网页
+    mWebView.loadUrl("http://www.baidu.com");
+  2、Android如何调用H5中的方法
+    要想调用H5的方法，必须先设置webView支持
+    webSettings.setJavaScriptEnabled(true);
+    Android调用H5中的方法，其实很简单，直接调用就好，不需要额外的操作
+    2.1 调用H5中无参无返回值的方法，假设H5中有个show()方法
+      mWebView.loadUrl("JavaScript:show()");
+    2.2 调用H5中带返回值的方法，假设H5中有个sum(int,int)方法
+      可以调用mWebView.evaluateJavascript()方法，该方法只在安卓4.4以上版本适用
+      mWebView.evaluateJavascript("sum(1,2)",new ValueCallback() {
+             @Override
+             public void on ReceiveValue(String value) {
+                  Log.e(TAG,"onReceiveValue value=" + value);
+             }
+       });
+    2.3 调用H5中带参数的方法
+      当传入固定字符串时，用单引号括起来；当传入变量时，需要用转义字符
+      mWebView.loadUrl("javascript:alertMessage('哈哈')");
+      String  content="9880";
+      mWebView.loadUrl("javascript:alertMessage(\""+content+"\")");
+  3、H5如何调用Android中的方法
+    思路：给js注入一个对象，然后调用该对象的方法
+    步骤：1.在Android中新建一个类
+          public  class  JsInteration  {
+                @JavascriptInterface
+                public  String  back() {
+                       return "hello world";
+                 }
+          }
+        2.注入对象，其中android是对象的别名
+          mWebView.addJavascriptInterface(new JsInteration(),"android");
+        3.H5调用方法
+          function s() {
+                var result=window.android.back();
+                document.getElementById("p").innerHTML=result;
+          }
+
+
+
+
 9.svg动画是否了解，原理是什么
 10.项目用的是什么网络请求框架，说了用okhttp,然后又问没用retrofit吗？估计是想问retrofit，然后继续问有没有看过okhttp源码
 11.service的启动方式区别？onStartCommand返回值的意义？
