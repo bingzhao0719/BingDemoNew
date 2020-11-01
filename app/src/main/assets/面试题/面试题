@@ -3,6 +3,13 @@
 1.如何做插件化、组件化
 2.音视频，怎么用原生播放一个视频
 3.动画有哪些，还知道其它什么第三方动画框架
+ 1.view动画（视图动画）
+ 2.帧动画
+   逐帧动画本质：按顺序播放一组预先设定好的图片
+   使用步骤：1.设置动画，创建xml文件，定义好animation-list
+           2.启动动画，AnimationDrawable.start(),animation-list最终会解析成AnimationDrawable对象
+           作为ImageView的drawable
+ 3.属性动画
 4.状态栏沉浸式效果步骤
 文章：https://juejin.im/post/6844903490402123789
 思路：1.设置布局全屏，使得内容可以侵入到状态栏下
