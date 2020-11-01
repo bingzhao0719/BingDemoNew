@@ -60,7 +60,7 @@ public class MyViewGroup extends FrameLayout {
                 Log.d("wubingzhao", "MyViewGroup onInterceptTouchEvent ACTION_CANCEL: ");
                 break;
         }
-        return dispatch;
+        return super.onInterceptTouchEvent(event);
     }
 
     @Override

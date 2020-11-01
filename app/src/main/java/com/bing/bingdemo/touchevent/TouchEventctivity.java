@@ -1,35 +1,29 @@
 package com.bing.bingdemo.touchevent;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
-import com.bing.bingdemo.BaseActivity;
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bing.bingdemo.R;
-import com.bing.bingdemo.adil.AidlActivity;
+import com.bing.core.BaseActivity;
+import com.bing.core.router.RouterJump;
+import com.bing.core.router.RouterName;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import static android.view.View.STATUS_BAR_HIDDEN;
-
+@Route(path = "app/touchevent")
 public class TouchEventctivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_touch_eventctivity);
-        final View view = findViewById(R.id.layout);
+    protected int getLayoutId() {
+        return R.layout.activity_touch_eventctivity;
+    }
+
+    @Override
+    protected void initData() {
         findViewById(R.id.view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i("wubingzhao", "onClick: ");
-                Intent intent = new Intent(TouchEventctivity.this, AidlActivity.class);
-                startActivity(intent);
+                RouterJump.start(RouterName.TestActivity);
             }
         });
     }
