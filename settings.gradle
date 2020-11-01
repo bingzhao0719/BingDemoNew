@@ -1,3 +1,5 @@
+include ':mine'
+include ':order'
 include ':core'
 rootProject.name='BingDemo'
 include ':app'
