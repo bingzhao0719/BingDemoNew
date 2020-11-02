@@ -7,8 +7,9 @@
     tools:context=".MineActivity">
     
     <TextView
+        android:id="@+id/tvMine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="我的"/>
+        android:text="跳转到订单页面"/>
 
 </FrameLayout>

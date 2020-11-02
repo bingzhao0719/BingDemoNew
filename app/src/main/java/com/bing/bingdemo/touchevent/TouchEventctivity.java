@@ -23,7 +23,7 @@ public class TouchEventctivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Log.i("wubingzhao", "onClick: ");
-                RouterJump.start(RouterName.TestActivity);
+                RouterJump.start(RouterName.MineActivity);
             }
         });
     }

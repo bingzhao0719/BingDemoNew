@@ -4,11 +4,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class OrderActivity extends AppCompatActivity {
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.bing.core.BaseActivity;
+import com.bing.core.router.RouterName;
+
+@Route(path = RouterName.OrderActivity)
+public class OrderActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+    protected int getLayoutId() {
+        return R.layout.activity_order;
     }
 }
