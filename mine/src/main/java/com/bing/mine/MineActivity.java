@@ -1,17 +1,22 @@
 package com.bing.mine;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bing.core.BaseActivity;
 import com.bing.core.router.RouterJump;
 import com.bing.core.router.RouterName;
+import com.ibalife.base_service.OrderFactory;
 
 @Route(path = RouterName.MineActivity)
 public class MineActivity extends BaseActivity {
+    @Autowired(name = "test")
+    String test;
 
     @Override
     protected int getLayoutId() {
@@ -26,5 +31,8 @@ public class MineActivity extends BaseActivity {
                 RouterJump.start(RouterName.OrderActivity);
             }
         });
+        int orderCount = OrderFactory.getInstance().getOrder().getOrderCount();
+        Log.i("wubingzhao", "initData orderCount: "+orderCount);
+        Log.i("wubingzhao", "initData test: "+test);
     }
 }

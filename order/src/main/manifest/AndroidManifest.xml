@@ -3,7 +3,8 @@
     package="com.bing.order">
     
     <application
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".OrderApp">
         <activity android:name=".OrderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
