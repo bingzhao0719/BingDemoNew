@@ -20,15 +20,15 @@
         <activity android:name=".H5.H5Activity">
         </activity>
         <activity android:name=".touchevent.TouchEventctivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".cms.CmsActivity">
             <intent-filter>
                 <action android:name="com.bing.test" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
