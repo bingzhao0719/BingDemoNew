@@ -1,0 +1,13 @@
+init进程是用户空间的第一个进程，zygote是第一个java进程,SystemServer是zygote孵化的第一个进程，Launcher是zygote孵化的第一个app进程
+
+1.你是如何理解zygote的？（考察zygote的作用，zygote的启动流程，zygote的工作原理）
+1）zygote的作用：1.启动SystemServer
+               2.孵化应用进程
+SystemServer为什么由zygote启动而不是init进程？
+   因为SystemServer需要用到zygote中的一些资源，例如常用类、主题资源、共享库
+2）zygote的启动流程：
+3）zygote的工作原理：zygote在启动之后会通过loop进入循环等待创建应用的socket请求，当有创建应用的socket请求到来时，会调用runOnce
+                  方法进行处理，在runOnce会调用RuntimeInit的zygoteInit方法，在zygoteInit方法中会调用nativeZygoteInit
+                  和applicationInit方法，nativeZygoteInit方法主要是为binder机制的准备，而applicationInit会反射调用
+                  ActivityThread的main方法。
+
