@@ -5,9 +5,15 @@ init进程是用户空间的第一个进程，zygote是第一个java进程,Syste
                2.孵化应用进程
 SystemServer为什么由zygote启动而不是init进程？
    因为SystemServer需要用到zygote中的一些资源，例如常用类、主题资源、共享库
-2）zygote的启动流程：
+2）zygote的启动流程：1.init进程fork出zygote进程，然后调用execve执行程序/system/bin/app_process对应的代码app_main.cpp
+                  2.在app_main.cpp的main函数中调用AndroidRuntime的start函数启动虚拟机，注册jni函数，这一步主要是为了切换到java世界做准备
+                  3.在AndroidRuntime的start函数中会反射调用(通过jni调用？)ZygoteInit的main方法（从此zygote切换到了java世界），在main方法中预加载系统资源，主要包括主题资源、常用类、共享库等等
+                  4.ZygoteInit的main方法还会启动SystemServer
+                  5.最后进入socket loop，在socket loop中不断的接收socket消息，处理消息
 3）zygote的工作原理：zygote在启动之后会通过loop进入循环等待创建应用的socket请求，当有创建应用的socket请求到来时，会调用runOnce
                   方法进行处理，在runOnce会调用RuntimeInit的zygoteInit方法，在zygoteInit方法中会调用nativeZygoteInit
-                  和applicationInit方法，nativeZygoteInit方法主要是为binder机制的准备，而applicationInit会反射调用
+                  和applicationInit方法，nativeZygoteInit方法主要是启动binder机制，而applicationInit会反射调用
                   ActivityThread的main方法。
+
+SystemServer进程的启动流程：
 
