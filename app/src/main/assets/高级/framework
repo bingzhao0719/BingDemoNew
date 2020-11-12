@@ -15,5 +15,9 @@ SystemServer为什么由zygote启动而不是init进程？
                   和applicationInit方法，nativeZygoteInit方法主要是启动binder机制，而applicationInit会反射调用
                   ActivityThread的main方法。
 
-SystemServer进程的启动流程：
+SystemServer进程与app应用进程启动流程的区别与共同点：
+        区别：1.SystemServer是通过Zygote的forkSystemServer创建进程，而app应用进程是通过Zygote的forkAndSpecialize
+             2.SystemServer是在zygote的启动过程中启动的，而app进程是AMS通过socket请求zygote创建
+        共同点：都是通过RuntimeInit的zygoteInit进行初始化，启用binder机制和启动主线程，一个是启动SystemServer，一个是启动ActivityThread
+
 
