@@ -17,9 +17,10 @@ android {
 
             annotationProcessorOptions {
 
-                arguments = [AROUTER_MODULE_NAME :project.getName() ]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
 
-            } }
+            }
+        }
     }
 
     buildTypes {
@@ -46,5 +47,5 @@ dependencies {
     implementation project(':core')
     runtimeOnly project(':order')
     runtimeOnly project(':mine')
-    annotationProcessor'com.alibaba:arouter-compiler:1.5.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 }
