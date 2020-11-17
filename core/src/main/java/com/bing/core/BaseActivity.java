@@ -20,6 +20,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         presenter = newPresenter();
         if(presenter != null){
             presenter.attach(this);
+            getLifecycle().addObserver(presenter);
         }
         int layoutId = getLayoutId();
         if (layoutId > 0) {
@@ -29,8 +30,13 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         }
         initView();
         initData();
-        if(getPresenter() != null){
-            getPresenter().init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter != null){
+            getLifecycle().removeObserver(presenter);
         }
     }
 

@@ -1,6 +1,12 @@
 package com.bing.core;
 
-public class BasePresenter<V> {
+import android.util.Log;
+
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
+
+public class BasePresenter<V> implements LifecycleObserver {
     protected V activity;
     protected void attach(V view){
         activity = view;
@@ -8,7 +14,18 @@ public class BasePresenter<V> {
     protected V getV(){
         return activity;
     }
-    protected void init(){
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    protected void onCreate(){
 
+    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    protected void onResume(){
+
+    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    protected void onStop() {
+    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    protected void onDestroy(){
     }
 }
