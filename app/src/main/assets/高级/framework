@@ -20,4 +20,8 @@ SystemServer进程与app应用进程启动流程的区别与共同点：
              2.SystemServer是在zygote的启动过程中启动的，而app进程是AMS通过socket请求zygote创建
         共同点：都是通过RuntimeInit的zygoteInit进行初始化，启用binder机制和启动主线程，一个是启动SystemServer，一个是启动ActivityThread
 
+应用进程是怎么启动的？（考察linux下进程启动的方式、熟悉应用进程启动基本流程、深入理解应用进程启动的原理）
+进程启动方式：通过fork系统调用启动进程，fork会返回两次，在子进程中返回pid等于0，在父进程返回pid等于子进程的pid；通过fork创建的
+           子进程是继承父进程的资源的，但是如果在子进程中调用execve函数，继承父进程的资源会完全被一段二进制程序替换掉
+
 

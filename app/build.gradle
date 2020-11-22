@@ -45,7 +45,7 @@ dependencies {
     implementation 'com.noober.background:core:1.6.5'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation project(':core')
-    runtimeOnly project(':order')
+//    runtimeOnly project(':order')
     runtimeOnly project(':mine')
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 }

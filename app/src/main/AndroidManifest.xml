@@ -49,7 +49,8 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
-            android:taskAffinity="wubingzhao.test" />
+            android:taskAffinity="wubingzhao.test"
+            android:process=":maina"/>
         <activity
             android:name=".sqlite.SqliteActivity"
             android:process=":sqlite" />

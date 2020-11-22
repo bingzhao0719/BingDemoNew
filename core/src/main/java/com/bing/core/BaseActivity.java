@@ -1,6 +1,7 @@
 package com.bing.core;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -24,8 +25,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         }
         int layoutId = getLayoutId();
         if (layoutId > 0) {
-            View inflate = LayoutInflater.from(this).inflate(layoutId, null);
             FrameLayout contentLayout = findViewById(R.id.contentLayout);
+            View inflate = LayoutInflater.from(this).inflate(layoutId, contentLayout,false);
             contentLayout.addView(inflate);
         }
         initView();
@@ -55,5 +56,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     protected void initData() {
 
+    }
+    public static void test(){
+        Log.i("wubingzhao", "base test: ");
     }
 }

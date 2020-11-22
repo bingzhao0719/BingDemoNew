@@ -1,12 +1,9 @@
 package com.bing.bingdemo.customview;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
@@ -21,8 +18,13 @@ public class MyView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(getDefaultSize(getMinimumWidth(), widthMeasureSpec),
-                getDefaultSize(getMinimumHeight(), heightMeasureSpec));
+        int parentW = MeasureSpec.getSize(widthMeasureSpec);
+        int parentH = MeasureSpec.getSize(heightMeasureSpec);
+        Log.e("wubingzhao", "myview onMeasure parentW: "+parentW);
+        Log.e("wubingzhao", "myview onMeasure parentH: "+parentH);
+//        setMeasuredDimension(getDefaultSize(getMinimumWidth(), widthMeasureSpec),
+//                getDefaultSize(getMinimumHeight(), heightMeasureSpec));
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
     public static int getDefaultSize(int size, int measureSpec) {
         int result = size;
@@ -38,10 +40,5 @@ public class MyView extends View {
                 break;
         }
         return result;
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        canvas.drawCircle(getWidth() / 2,getHeight() / 2,getWidth() / 2,new Paint());
     }
 }
