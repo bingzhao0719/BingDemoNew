@@ -1,4 +1,17 @@
 1.快速排序算法
+public void sort(String[] array){
+    int len = array.length;
+    for(int i = 0;i<len;i++){
+        for(int j = 0;j < len - 1 - i;j++){
+            if(array[j] > array[j+1]){
+                array[j] = array[j] ^ array[j+1];
+                array[j+1] = array[j] ^ array[j+1];
+                array[j] = array[j] ^ array[j+1];
+            }
+        }
+    }
+    return array;
+}
 10个算法：递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法
 10个数据结构：数组、链表、栈、队列、二叉树、堆、跳表、图、Trie树
 
