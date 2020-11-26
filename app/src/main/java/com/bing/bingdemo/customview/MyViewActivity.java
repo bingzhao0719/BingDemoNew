@@ -1,8 +1,13 @@
 package com.bing.bingdemo.customview;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.bing.bingdemo.R;
+import com.bing.bingdemo.TestActivity;
 import com.bing.core.BaseActivity;
 import com.bing.core.BasePresenter;
 
@@ -26,6 +31,7 @@ public class MyViewActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.i("wubingzhao", "MyViewActivity onDestroy: ");
     }
 
     @Override
@@ -34,6 +40,10 @@ public class MyViewActivity extends BaseActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(MyViewActivity.this, TestActivity.class);
+//                startActivity(intent);
+                setResult(RESULT_OK);
+                finish();
             }
         });
     }

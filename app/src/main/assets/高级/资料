@@ -127,13 +127,71 @@ java面向对象三大特征：封装、继承、多态
 Android系统中的组件就是利用反射生成实例对象的。
 两种反射方法生成对象：1.利用Class对象的newInstance方法生成，该方法只能调用类的无参构造方法
                   2.根据Class对象获取Constructor对象，利用Constructor对象的newInstance方法生成，该方法可以调用类的有参构造
-3.代理模式与装饰模式的区别，手写一个代理模式，一个动态模式（尚德）
+3.代理模式与装饰模式的区别，手写一个代理模式，一个动态代理模式（尚德）
+
+动态代理：
+
+interface IShow{
+   void show();
+}
+class MyShow implements IShow{
+   void show(){
+     Log.i("w","myshow show");
+   }
+}
+class MyInvocationHandler implements InvocationHandler{
+      private Object realObject;
+      public(Object object){
+       this.realObject = object;
+      }
+      public Object invoke(Object proxy,Method method,Object[] args){
+            return method.invoke(realObject,args);
+      }
+}
+class Test{
+    public static void main(String[] args){
+       IShow show = new MyShow();
+       MyInvocationHandler handler = new MyInvocationHandler(show);
+       Class<?> interfaces = show.getClass().getInterfaces();
+       IShow showProxy = (IShow)Proxy.newInstance(show.getClass().getClassLoader(),interfaces,handler);
+
+    }
+}
 
 4.对象加载的过程，属性先加载还是方法先加载（尚德）
 5.垃圾回收机制与jvm结构（尚德）
+从三个方面讲一下java虚拟机的垃圾回收机制：1.哪些对象是待回收对象 2.什么时候回收 3.如何回收
+1）有两种算法判断对象是否应该回收：1.计数引用算法：对象被引用计数器加1，对象解除引用计数器减1，如果计数器为0的对象就是待回收的 2.可达性分析
+   算法：有这么一些GC Roots的对象，从这些GC Roots开始，所引用的对象之间行程一条引用链，只要对象能通过引用链到达GC Roots就表示是存活的，
+        否则就是待回收的。
+   可以作为GC Roots的对象：1.虚拟机栈上引用的对象（方法中的局部变量）
+                        2.方法区中的静态属性和常量应用的对象（静态变量和常量引用的对象）
+                        3.本地方法栈中jni中引用的对象
+objective-c使用的是计数引用算法，hotspot虚拟机使用的是可达性分析算法
+2）什么时候回收：hotspot虚拟机将堆分成年轻代和老年代，而年轻代又分成一个Eden区和两个survivor区，年轻代和老年代比例1：2，Eden和survivor
+              比例8：1：1。新创建的对象在Eden区分配，如果分配不下触发Minor GC，存活的对象复制到其中一块survivor，下一次回收Eden和survivor
+              存活的复制到另一块survivor，如果survivor放不下放到老年代，老年代如果放不下触发Full GC。
+为什么需要survivor？
+如果没有survivor，存活的对象直接复制到老年代，老年代很快就满导致Full GC，而Full GC效率低
+为什么需要2块survivor？
+因为Eden和survivor的回收算法是复制算法，如果只有一块survivor，第一次Eden存活的对象复制到survivor，没问题，以后的回收survivor也会回收
+些对象，Eden区的对象再复制过来就会导致survivor的内存碎片的产生。
+3）如何回收
+jvm的运行时结构区域：1.程序计数器
+                 2.虚拟机栈
+                 3.本地方法栈
+                 4.堆
+                 5.方法区
 6.自定义view，事件分发机制讲一讲（尚德）
 7.http与https的区别（尚德）
+http使用80端口，https使用443端口；
+http传输的数据是明文，https传输的数据是加密了的
 8.activity的启动模式，以及各启动模式生命周期问题（尚德）
+  1)：standard标准模式
+  2)：singleTask栈内单例模式
+  3)：singleTop栈顶单例模式
+  4)：singleInstance全局单例模式
+
 9.静态方法，静态对象为什么不能继承（尚德）
 10.activity怎么启动service，activity与service交互，service与thread的区别（尚德）
 11.介绍一下Android动画（尚德）
