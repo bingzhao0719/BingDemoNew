@@ -1,20 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.bing.bingdemo.customview.MyScrollview xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:background="#ff0000"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context=".customview.MyViewActivity"
     android:orientation="vertical">
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"/>
-    <com.bing.bingdemo.customview.MyView
-        android:id="@+id/view2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/colorPrimary" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1.简介
+ScrollView是我们在开发中经常使用的控件。1.简介
+ScrollView是我们在开发中经常使用的控件。当我们需要展示的内容比较多但并不是重复的item时，我们就会使用ScrollView使内容可以在垂直方向滚动显示防止显示不全。ScrollView使用起来非常简单，大多数情况下你甚至都不用写一行Java代码就能使用ScrollView了。但是要注意的是ScrollView中只能添加一个子View。今天我们就来看看ScrollView到底是如何实现的。以及最后会教大家一行代码实现类似IOS上的弹性ScrollView。_
 
-</LinearLayout>
+作者：SkyKai
+链接：https://www.jianshu.com/p/c3ed4253f87e
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。1.简介
+ScrollView是我们在开发中经常使用的控件。当我们需要展示的内容比较多但并不是重复的item时，我们就会使用ScrollView使内容可以在垂直方向滚动显示防止显示不全。ScrollView使用起来非常简单，大多数情况下你甚至都不用写一行Java代码就能使用ScrollView了。但是要注意的是ScrollView中只能添加一个子View。今天我们就来看看ScrollView到底是如何实现的。以及最后会教大家一行代码实现类似IOS上的弹性ScrollView。_
+
+作者：SkyKai
+链接：https://www.jianshu.com/p/c3ed4253f87e
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。1.简介
+ScrollView是我们在开发中经常使用的控件。当我们需要展示的内容比较多但并不是重复的item时，我们就会使用ScrollView使内容可以在垂直方向滚动显示防止显示不全。ScrollView使用起来非常简单，大多数情况下你甚至都不用写一行Java代码就能使用ScrollView了。但是要注意的是ScrollView中只能添加一个子View。今天我们就来看看ScrollView到底是如何实现的。以及最后会教大家一行代码实现类似IOS上的弹性ScrollView。_
+
+作者：SkyKai
+链接：https://www.jianshu.com/p/c3ed4253f87e
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。1.简介
+ScrollView是我们在开发中经常使用的控件。当我们需要展示的内容比较多但并不是重复的item时，我们就会使用ScrollView使内容可以在垂直方向滚动显示防止显示不全。ScrollView使用起来非常简单，大多数情况下你甚至都不用写一行Java代码就能使用ScrollView了。但是要注意的是ScrollView中只能添加一个子View。今天我们就来看看ScrollView到底是如何实现的。以及最后会教大家一行代码实现类似IOS上的弹性ScrollView。_
+
+作者：SkyKai
+链接：https://www.jianshu.com/p/c3ed4253f87e
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。1.简介
+ScrollView是我们在开发中经常使用的控件。当我们需要展示的内容比较多但并不是重复的item时，我们就会使用ScrollView使内容可以在垂直方向滚动显示防止显示不全。ScrollView使用起来非常简单，大多数情况下你甚至都不用写一行Java代码就能使用ScrollView了。但是要注意的是ScrollView中只能添加一个子View。今天我们就来看看ScrollView到底是如何实现的。以及最后会教大家一行代码实现类似IOS上的弹性ScrollView。_
+
+作者：SkyKai
+链接：https://www.jianshu.com/p/c3ed4253f87e
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。1.简介
+ScrollView是我们在开发中经常使用的控件。当我们需要展示的内容比较多但并不是重复的item时，我们就会使用ScrollView使内容可以在垂直方向滚动显示防止显示不全。ScrollView使用起来非常简单，大多数情况下你甚至都不用写一行Java代码就能使用ScrollView了。但是要注意的是ScrollView中只能添加一个子View。今天我们就来看看ScrollView到底是如何实现的。以及最后会教大家一行代码实现类似IOS上的弹性ScrollView。_
+
+作者：SkyKai
+链接：https://www.jianshu.com/p/c3ed4253f87e
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"/>
+    </FrameLayout>
+
+</com.bing.bingdemo.customview.MyScrollview>

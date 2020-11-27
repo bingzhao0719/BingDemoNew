@@ -36,16 +36,6 @@ public class MyViewActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        final View view = findViewById(R.id.view2);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MyViewActivity.this, TestActivity.class);
-//                startActivity(intent);
-                setResult(RESULT_OK);
-                finish();
-            }
-        });
     }
 }
 class MyPresenter extends BasePresenter{

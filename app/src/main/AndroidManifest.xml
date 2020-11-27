@@ -18,13 +18,13 @@
         android:theme="@style/AppTheme"
         tools:replace="android:name">
         <activity android:name=".TestActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-        
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".customview.MyViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".H5.H5Activity" />
         <activity android:name=".touchevent.TouchEventctivity" />
