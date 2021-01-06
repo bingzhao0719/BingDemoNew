@@ -51,7 +51,10 @@ public class MyViewGroup extends FrameLayout {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("wubingzhao", "MyViewGroup onInterceptTouchEvent ACTION_MOVE: ");
+                Log.d("wubingzhao", "MyViewGroup onInterceptTouchEvent ACTION_MOVE: "+event.getX());
+                if(event.getX() > 100){
+                    return true;
+                }
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d("wubingzhao", "MyViewGroup onInterceptTouchEvent ACTION_UP: ");
