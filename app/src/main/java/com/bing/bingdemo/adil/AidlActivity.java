@@ -41,15 +41,15 @@ public class AidlActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aidl);
-        IntentFilter intentFilter = new IntentFilter("haha");
-        intentFilter.setPriority(2);
-        registerReceiver(new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Log.i("wubingzhao", "onReceive aidlActivity intent: "+intent +" thread:"+Thread.currentThread());
-//                abortBroadcast();
-            }
-        },intentFilter);
+//        IntentFilter intentFilter = new IntentFilter("haha");
+//        intentFilter.setPriority(2);
+//        registerReceiver(new BroadcastReceiver() {
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                Log.i("wubingzhao", "onReceive aidlActivity intent: "+intent +" thread:"+Thread.currentThread());
+////                abortBroadcast();
+//            }
+//        },intentFilter);
     }
 
     private static IBookM bookM;
@@ -86,9 +86,9 @@ public class AidlActivity extends BaseActivity {
         intent.setAction("1");
 //        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
         startService(intent);
-        intent = new Intent(this,BookService.class);
-        intent.setAction("2");
-        startService(intent);
+//        intent = new Intent(this,BookService.class);
+//        intent.setAction("2");
+//        startService(intent);
     }
 
 
@@ -120,9 +120,9 @@ public class AidlActivity extends BaseActivity {
 //            }
 //        }, Context.BIND_AUTO_CREATE);
 
-//        Intent intent = new Intent(this,BookService.class);
-//        stopService(intent);
-        unbindService(serviceConnection);
+        Intent intent = new Intent(this,BookService.class);
+        stopService(intent);
+//        unbindService(serviceConnection);
 
     }
     public void onBtnSearch(View view) {

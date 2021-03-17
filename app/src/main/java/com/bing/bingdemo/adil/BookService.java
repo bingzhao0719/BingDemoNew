@@ -1,6 +1,7 @@
 package com.bing.bingdemo.adil;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
@@ -11,6 +12,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static com.bing.bingdemo.adil.AidlActivity.serviceConnection2;
 
 public class BookService extends Service {
     public BookService() {
@@ -94,8 +97,14 @@ public class BookService extends Service {
     }
 
     @Override
+    public void onStart(Intent intent, int startId) {
+        super.onStart(intent, startId);
+        Log.i("wubingzhao", "onStart intent: " +intent);
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i("wubingzhao", "onStartCommand startId: " +startId+" flags:"+flags);
+        Log.i("wubingzhao", "onStartCommand intent: " +intent+" flags:"+flags);
         return START_STICKY;
     }
 
@@ -107,6 +116,7 @@ public class BookService extends Service {
         book.bookId = 11;
         book.bookName = "蔡智慧书";
         bookList.add(book);
+
     }
 
     @Override

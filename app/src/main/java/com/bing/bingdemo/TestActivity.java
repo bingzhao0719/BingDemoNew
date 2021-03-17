@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bing.bingdemo.customview.MyViewActivity;
+import com.bing.bingdemo.update.AppUpdateActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,8 +42,9 @@ public class TestActivity extends AppCompatActivity {
 //                                                             interfaces, handler);
 //        int work = proxyInstance.work();
 //        Log.i("wubingzhao", "onBtnClicked1 work: "+work);
-        Intent intent = new Intent(this, MyViewActivity.class);
-        startActivityForResult(intent,1);
+        Intent intent = new Intent(this, AppUpdateActivity.class);
+//        startActivityForResult(intent,1);
+        startActivity(intent);
     }
 
 

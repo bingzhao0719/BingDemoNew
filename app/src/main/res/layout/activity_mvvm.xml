@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="user"
+            type="com.bing.bingdemo.mvvm.User" />
+        <variable
+            name="visible"
+            type="boolean" />
+        <import type="android.view.View" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.firstName}"/>
+        <TextView
+            android:id="@+id/tvText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.lastName}"
+            android:visibility="@{visible ? View.VISIBLE : View.GONE}"/>
+
+    </LinearLayout>
+</layout>

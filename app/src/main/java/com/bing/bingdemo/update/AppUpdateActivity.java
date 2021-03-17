@@ -1,10 +1,12 @@
 package com.bing.bingdemo.update;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
@@ -16,6 +18,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.bing.bingdemo.R;
+import com.bing.bingdemo.TestActivity;
+import com.bing.bingdemo.mvvm.MvvmActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +37,7 @@ public class AppUpdateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("wubingzhao", "onCreate : ");
         setContentView(R.layout.activity_app_update);
         downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         downloadObserver = new DownloadChangeObserver();
@@ -52,8 +57,46 @@ public class AppUpdateActivity extends AppCompatActivity {
     }
 
     public void onUpdateDownload(View view) {
-        startDownload("https://4qo.cn/we7qo","版本更新","版本更新");
+//        startDownload("https://4qo.cn/we7qo","版本更新","版本更新");
+        Intent intent = new Intent(this, TestActivity.class);
+//        intent.setAction("android.intent.action.MAIN");
+//        intent.setClassName("com.ibalife.ibaboss","com.ibalife.ibaboss.ui.cms.CmsMainActivity");
+//        intent.addCategory("android.intent.category.LAUNCHER");
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivityForResult(intent,10);
+        startActivity(intent);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("wubingzhao", "onStart : ");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.i("wubingzhao", "onNewIntent : ");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("wubingzhao", "onActivityResult resultCode: "+resultCode);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("wubingzhao", "onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("wubingzhao", "onRestart");
+    }
+
     public long startDownload(String uri, String title, String description) {
         DownloadManager.Request req = new DownloadManager.Request(Uri.parse(uri));
 

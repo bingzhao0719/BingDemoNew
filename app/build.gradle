@@ -34,6 +34,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    dataBinding{
+        enabled true
+    }
 
 }
 
@@ -53,4 +56,5 @@ dependencies {
 //    runtimeOnly project(':order')
     runtimeOnly project(':mine')
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+    implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
 }
