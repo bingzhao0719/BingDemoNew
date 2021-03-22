@@ -22,6 +22,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.i("wubingzhao", "MyApplication onCreate: ");
         initModuleApp();
         if(BuildConfig.DEBUG){
             ARouter.openDebug();

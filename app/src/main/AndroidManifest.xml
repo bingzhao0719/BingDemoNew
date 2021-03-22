@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bing.bingdemo">
+    package="com.bing.bingdemo"
+    android:sharedUserId="com.ibalife">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -42,9 +43,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name">
-        <activity android:name=".mvvm.MvvmActivity"
-            android:launchMode="singleTask">
+        <activity android:name=".provider.ProviderActivity"
+            android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.bing.bingdemo.provider;com.bing.bingdemo.provider4"
+            android:name="com.bing.bingdemo.provider.MyContentProvider"
+            android:exported="true"
+            android:process=":provider"/>
+        <activity
+            android:name=".mvvm.MvvmActivity"
+            android:launchMode="singleTask"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -56,13 +70,19 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".update.AppUpdateActivity"
-            android:launchMode="singleTask">
+        <activity
+            android:name=".update.AppUpdateActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.bing.bing222">
+            <intent-filter >
+                <action android:name="com.bing.test.test" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity android:name=".TestActivity" />
         <activity android:name=".customview.MyViewActivity" />
         <activity android:name=".H5.H5Activity" />
-        <activity android:name=".touchevent.TouchEventctivity"></activity>
+        <activity android:name=".touchevent.TouchEventctivity" />
         <activity android:name=".cms.CmsActivity">
             <intent-filter>
                 <action android:name="com.bing.test" />
@@ -79,12 +99,7 @@
             android:exported="true"
             android:process=":bookService" />
 
-        <activity android:name=".adil.AidlActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".adil.AidlActivity">
         </activity>
         <activity
             android:name=".fragment.FragmentTestActivity"

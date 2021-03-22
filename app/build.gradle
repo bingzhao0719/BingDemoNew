@@ -29,6 +29,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    signingConfigs {
+        release {
+            storeFile file("./ibaboss.jks")
+            storePassword "1597530"
+            keyAlias "Ibaboss"
+            keyPassword "1597530"
+//            v2SigningEnabled false
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
