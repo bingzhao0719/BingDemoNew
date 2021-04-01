@@ -43,6 +43,9 @@ onAttach->onCreate->onCreateView->onActivityCreate->onStart->onResume
 返回栈：
 
 7.surfaceView的特点
+    1. 具有独立的绘图表面；
+    2. 需要在宿主窗口上挖一个洞来显示自己；
+    3. 它的UI绘制可以在独立的线程中进行，这样就可以进行复杂的UI绘制，并且不会影响应用程序的主线程响应用户输入。
 8.原生与H5怎么交互，原生怎么调H5，H5怎么调原生
 文章：https://www.jianshu.com/p/0b986d6e2e17
   1、webView如何加载H5页面
